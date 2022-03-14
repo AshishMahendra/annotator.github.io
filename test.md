@@ -1,10 +1,10 @@
 # Welcome to the Jaseci Tutorial
 
-Hi! The First thought come to our mind after knowing that we have to learn a new programming language, Jaseci is, WHY, a new language?
+Hi! The First thought comes to our mind after knowing that we have to learn a new programming language, Jaseci is, WHY, a new language?
 Let's achieve the answer together.
 
 # Jaseci is a computational model and a language in one unit
-In simple words, **Jaseci** provides a platform where you can implement the SOTA AI modules without taking the pain of training or hosting them. 
+In simple words, **Jaseci** provides a platform where you can implement the **SOTA** AI modules without taking the pain of training or hosting them. 
 
 
 ## Starting With Jaseci
@@ -63,18 +63,46 @@ In simple words, **Jaseci** provides a platform where you can implement the SOTA
         }
     Save the above code in `hello_world.jac` file in the current working directory.
 
+    To run the jac code you simple have to :
+
         jaseci > jac run hello_world.jac
         2022-03-14 16:24:35,847 - INFO - parse_jac: default: Processing Jac code...
         2022-03-14 16:24:35,905 - INFO - register: default: Successfully registered code
         hello world
-    Let's get into the details, `walker` is keyword used to define a **Walker**, `init` is a reserved word which in this case provides the entry point to the jac program. Therefore, once the compiler encounter `walker init {}` it start the execution, line 2 contain 2 reserve words `std` library for standard operation and `out()` is a module for printing, so the command `std.out()`  helps in displaying the passed text `Hello World` on the command prompt.
+    Let's get into the details, `walker` is keyword used to define a **Walker**, `init` is a reserved word which in this case provides the entry point to the jac program. Therefore, once the compiler encounter `walker init {}` it start the execution, line 2 contains, `std` library for standard operation and `out()` is a module for printing, so the command `std.out()`  helps in displaying the passed text `Hello World` on the command prompt.
+
+3. Let's consised a full jac program:
+   
+        node man;
+        node woman;
+
+        edge mom;
+        edge dad;
+        edge married;
+
+        walker init {
+            root {
+                spawn here --> node::man;
+                spawn here --> node::woman;
+                --> node::man <-[married]-> --> node::woman;
+                take -->; }
+            woman {
+                son = spawn here <-[mom]- node::man;
+                son -[dad]-> <-[married]->;
+            }
+            man {
+                std.out("I␣didn’t␣do␣any␣of␣the␣hard␣work.");
+            }
+        }
+
+
 
 
 
 
 
 # Appendix 
-### Interface Parameters
+## Interface Parameters
     config delete (name: str, do check: bool = True)
     config exists (name: str)
     config get (name: str, do check: bool = True)
